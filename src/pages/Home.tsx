@@ -155,7 +155,7 @@ function Home() {
                   repeatType: "reverse",
                 }}
               >
-                Metaarth Pharma
+                Metaarth Monty jha
               </motion.h1>
               <p className="text-xl md:text-2xl mb-8 leading-relaxed">
                 Your Trusted Partner in Healthcare Solutions. Delivering Excellence Through Innovation and Quality

@@ -13,15 +13,17 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
-                <span>123 Business Ave, Suite 100, City, ST 12345</span>
+                <span>7 Ground Floor,
+Saran Chamber-II,
+Park road, Hazrataganj, Lucknow-226001-</span>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
-                <span>+1 (555) 123-4567</span>
+                <span>+919839906754</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
-                <span>contact@company.com</span>
+                <span>metaarthfinserve@gmail.com</span>
               </div>
             </div>
           </div>
@@ -38,7 +40,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Resources
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
@@ -48,7 +50,7 @@ const Footer = () => {
               <li><Link to="/sustainability" className="hover:text-white transition-colors">Sustainability</Link></li>
               <li><Link to="/partners" className="hover:text-white transition-colors">Partners</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Social Media */}
           <div>

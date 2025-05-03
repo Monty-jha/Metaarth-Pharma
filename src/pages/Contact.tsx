@@ -3,20 +3,37 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', phone: '', subject: '', message: '' });
   const [status, setStatus] = useState('idle');
   const [showContactForm, setShowContactForm] = useState(false);
-  const contactFormRef = useRef(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const contactFormRef = useRef<HTMLDivElement>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
 
     try {
-      const { error } = await supabase.from('contact_submissions').insert([formData]);
-      if (error) throw error;
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -31,7 +48,7 @@ const Contact = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -42,7 +59,7 @@ const Contact = () => {
     }, 100);
   };
 
-  const toggleFaq = (index) => {
+  const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
@@ -252,7 +269,7 @@ const Contact = () => {
                       type="email"
                       id="email"
                       name="email"
-                      placeholder="john@example.com"
+                      placeholder="metaarthfinserve@gmail.com"
                       value={formData.email}
                       onChange={handleChange}
                       required
@@ -268,7 +285,7 @@ const Contact = () => {
                       type="tel"
                       id="phone"
                       name="phone"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+919839906754"
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"

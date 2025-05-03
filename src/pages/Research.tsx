@@ -5,7 +5,7 @@ import { Microscope, Brain, Dna, Syringe, FlaskRound as Flask, Search, Award, Us
 function Research() {
   // Image carousel for the hero section
   const heroImages = [
-    "https://images.unsplash.com/photo-1581093458791-9f3c3cf9d474?auto=format&fit=crop&q=80", // Medical research lab
+    "https://t3.ftcdn.net/jpg/04/23/78/68/360_F_423786860_FOocezRWYw2oNET6Ky3xq2TZ0p3nS0JY.jpg", // Medical research lab
     "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80", // Scientist with microscope
     "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80", // DNA research
     "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80"  // Healthcare technology

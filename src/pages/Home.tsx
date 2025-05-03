@@ -106,8 +106,8 @@ function Home() {
   return (
     <div className="bg-white dark:bg-gray-800 text-black dark:text-white">
       <div className="min-h-screen">
-        {/* Hero Section with Image Carousel */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Hero Section with Image Carousel - IMPROVED RESPONSIVENESS */}
+        <section className="relative min-h-[500px] md:h-screen flex items-center justify-center overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentImageIndex}
@@ -129,7 +129,7 @@ function Home() {
                 className="absolute inset-0"
                 style={{
                   backgroundImage: `url(${heroImages[currentImageIndex]})`,
-                  backgroundSize: "120% 120%",
+                  backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
@@ -139,9 +139,14 @@ function Home() {
           </AnimatePresence>
 
           <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 1 }}
+              className="py-8 md:py-0"
+            >
               <motion.h1
-                className="text-6xl md:text-7xl font-bold mb-6"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6"
                 animate={{
                   textShadow: [
                     "0 0 20px rgba(255,255,255,0.2)",
@@ -157,38 +162,46 @@ function Home() {
               >
                 Metaarth Pharma
               </motion.h1>
-              <p className="text-xl md:text-2xl mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 leading-relaxed px-4">
                 Your Trusted Partner in Healthcare Solutions. Delivering Excellence Through Innovation and Quality
                 Service.
               </p>
-              <div className="flex gap-4 justify-center">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto"
+                >
                   <Link
                     to="/contact"
-                    className="inline-flex items-center bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors"
+                    className="inline-flex items-center justify-center bg-white text-blue-900 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors w-full sm:w-auto"
                   >
                     Get in Touch
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
+                <motion.div 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto"
+                >
+                  {/* <Link
                     to="/services"
-                    className="inline-flex items-center border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center justify-center border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors w-full sm:w-auto"
                   >
                     Our Services
-                  </Link>
+                  </Link> */}
                 </motion.div>
               </div>
             </motion.div>
           </div>
 
-          {/* Image indicator dots */}
-          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-2 z-10">
+          {/* Image indicator dots - improved for mobile */}
+          <div className="absolute bottom-5 sm:bottom-10 left-0 right-0 flex justify-center gap-2 z-10">
             {heroImages.map((_, index) => (
               <motion.button
                 key={index}
-                className={`w-3 h-3 rounded-full ${currentImageIndex === index ? "bg-white" : "bg-white/50"}`}
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${currentImageIndex === index ? "bg-white" : "bg-white/50"}`}
                 onClick={() => setCurrentImageIndex(index)}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
@@ -655,12 +668,12 @@ function Home() {
               </motion.div>
 
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link
+                {/* <Link
                   to="/partnerships"
                   className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors w-full sm:w-auto"
                 >
                   Explore Partnerships
-                </Link>
+                </Link> */}
               </motion.div>
             </div>
           </div>
@@ -675,19 +688,19 @@ function Home() {
               {
                 icon: Building2,
                 title: "Headquarters",
-                info: "123 MetaHealth Plaza, San Francisco, CA 94103, USA",
+                info: "7Ground Floor,Saran Chamber-II,Park road, Hazaratganj,Lucknow-226001",
                 color: "bg-blue-50 text-blue-600",
               },
               {
                 icon: Phone,
                 title: "Phone",
-                info: "+1 (555) 123-4567",
+                info: "+919839906754",
                 color: "bg-green-50 text-green-600",
               },
               {
                 icon: Mail,
                 title: "Email",
-                info: "info@metahealth.com",
+                info: "metaarthfinserve@gmail.com",
                 color: "bg-yellow-50 text-yellow-600",
               },
               {
